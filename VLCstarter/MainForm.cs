@@ -8,6 +8,7 @@ namespace VLCstarter
     // Directives
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -16,6 +17,11 @@ namespace VLCstarter
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// The count.
+        /// </summary>
+        int count = 0;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:VLCstarter.MainForm"/> class.
         /// </summary>
@@ -176,7 +182,33 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnLaunchButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Try to set command
+            string command = this.GetCommand();
+
+            // Check there's something
+            if (command.Length > 0)
+            {
+                // Update launch command
+                this.commandTextBox.Text = command;
+            }
+
+            // TODO Perform launch [can be improved]
+            try
+            {
+                // Launch
+                Process.Start("vlc", command.Substring(4));
+
+                // Raise count
+                this.count++;
+
+                // Update status
+                this.countToolStripStatusLabel.Text = this.count.ToString();
+            }
+            catch (Exception ex)
+            {
+                // Advise user
+                MessageBox.Show($"Error when launching VLC:{Environment.NewLine}{Environment.NewLine}{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
