@@ -112,7 +112,15 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnNumericUpDownValueChanged(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Try to set command
+            string command = this.GetCommand();
+
+            // Check there's something
+            if (command.Length > 0)
+            {
+                // Update launch command
+                this.commandTextBox.Text = command;
+            }
         }
 
         /// <summary>
@@ -127,6 +135,9 @@ namespace VLCstarter
                 // Advise user
                 MessageBox.Show("Please set target file path", "Path missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                // Focus text box
+                this.pathTextBox.Focus();
+
                 // Halt flow
                 return string.Empty;
             }
@@ -140,12 +151,8 @@ namespace VLCstarter
                 // Set start seconds
                 int startSeconds = ((int)this.startHourNumericUpDown.Value * 60 * 60) + ((int)this.startMinuteNumericUpDown.Value * 60) + (int)this.startSecnodNmericUpDown.Value;
 
-                // Check there's something
-                if (startSeconds > 0)
-                {
-                    // Append to command
-                    command += $" --start-time={startSeconds}";
-                }
+                // Append to command
+                command += $" --start-time={startSeconds}";
             }
 
             // Check end time
@@ -154,12 +161,8 @@ namespace VLCstarter
                 // Set end seconds
                 int endSeconds = ((int)this.endHourNumericUpDown.Value * 60 * 60) + ((int)this.endMinuteNumericUpDown.Value * 60) + (int)this.endSecondNumericUpDown.Value;
 
-                // Check there's something
-                if (endSeconds > 0)
-                {
-                    // Append to command
-                    command += $" --stop-time={endSeconds}";
-                }
+                // Append to command
+                command += $" --stop-time={endSeconds}";
             }
 
             // Return command
