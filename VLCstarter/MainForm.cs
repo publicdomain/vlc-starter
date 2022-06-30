@@ -116,6 +116,57 @@ namespace VLCstarter
         }
 
         /// <summary>
+        /// Gets the command.
+        /// </summary>
+        /// <returns>The command.</returns>
+        private string GetCommand()
+        {
+            // Check path
+            if (this.pathTextBox.Text.Length == 0)
+            {
+                // Advise user
+                MessageBox.Show("Please set target file path", "Path missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Halt flow
+                return string.Empty;
+            }
+
+            // Set command
+            string command = "vlc";
+
+            // Check start time
+            if (!(this.startHourNumericUpDown.Value == 0 && this.startMinuteNumericUpDown.Value == 0 && this.startSecnodNmericUpDown.Value == 0))
+            {
+                // Set start seconds
+                int startSeconds = ((int)this.startHourNumericUpDown.Value * 60 * 60) + ((int)this.startMinuteNumericUpDown.Value * 60) + (int)this.startSecnodNmericUpDown.Value;
+
+                // Check there's something
+                if (startSeconds > 0)
+                {
+                    // Append to command
+                    command += $" --start-time={startSeconds}";
+                }
+            }
+
+            // Check end time
+            if (!(this.endHourNumericUpDown.Value == 0 && this.endMinuteNumericUpDown.Value == 0 && this.endSecondNumericUpDown.Value == 0))
+            {
+                // Set end seconds
+                int endSeconds = ((int)this.endHourNumericUpDown.Value * 60 * 60) + ((int)this.endMinuteNumericUpDown.Value * 60) + (int)this.endSecondNumericUpDown.Value;
+
+                // Check there's something
+                if (endSeconds > 0)
+                {
+                    // Append to command
+                    command += $" --stop-time={endSeconds}";
+                }
+            }
+
+            // Return command
+            return $"{command} \"{this.pathTextBox.Text}\"";
+        }
+
+        /// <summary>
         /// Handles the launch button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
