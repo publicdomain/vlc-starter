@@ -151,7 +151,8 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnNumericUpDownValueChanged(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Process VLC command
+            this.ProcessCommand();
         }
 
         /// <summary>
@@ -161,7 +162,8 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnPathTextBoxTextChanged(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Process VLC command
+            this.ProcessCommand();
         }
 
         /// <summary>
