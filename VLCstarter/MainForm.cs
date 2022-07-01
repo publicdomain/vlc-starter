@@ -23,6 +23,11 @@ namespace VLCstarter
         int count = 0;
 
         /// <summary>
+        /// The no command flag.
+        /// </summary>
+        bool noCommand = false;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:VLCstarter.MainForm"/> class.
         /// </summary>
         public MainForm()
@@ -38,7 +43,26 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Reset text boxes
+            this.pathTextBox.Text = string.Empty;
+            this.commandTextBox.Text = string.Empty;
+
+            // Toggle noCommand flag
+            this.noCommand = true;
+
+            // Reset HH MM SS numeric up down boxes
+            this.startHourNumericUpDown.Value = 0;
+            this.startMinuteNumericUpDown.Value = 0;
+            this.startSecondNumericUpDown.Value = 0;
+            this.endHourNumericUpDown.Value = 0;
+            this.endMinuteNumericUpDown.Value = 0;
+            this.endSecondNumericUpDown.Value = 0;
+
+            // Toggle noCommand flag
+            this.noCommand = false;
+
+            // Focus path text box
+            this.pathTextBox.Focus();
         }
 
         /// <summary>
@@ -118,6 +142,13 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnNumericUpDownValueChanged(object sender, EventArgs e)
         {
+            // TODO Check no command flag [Can be made by event handler]
+            if (this.noCommand)
+            {
+                // Halt flow
+                return;
+            }
+
             // Try to set command
             string command = this.GetCommand();
 
@@ -152,10 +183,10 @@ namespace VLCstarter
             string command = "vlc";
 
             // Check start time
-            if (!(this.startHourNumericUpDown.Value == 0 && this.startMinuteNumericUpDown.Value == 0 && this.startSecnodNmericUpDown.Value == 0))
+            if (!(this.startHourNumericUpDown.Value == 0 && this.startMinuteNumericUpDown.Value == 0 && this.startSecondNumericUpDown.Value == 0))
             {
                 // Set start seconds
-                int startSeconds = ((int)this.startHourNumericUpDown.Value * 60 * 60) + ((int)this.startMinuteNumericUpDown.Value * 60) + (int)this.startSecnodNmericUpDown.Value;
+                int startSeconds = ((int)this.startHourNumericUpDown.Value * 60 * 60) + ((int)this.startMinuteNumericUpDown.Value * 60) + (int)this.startSecondNumericUpDown.Value;
 
                 // Append to command
                 command += $" --start-time={startSeconds}";
