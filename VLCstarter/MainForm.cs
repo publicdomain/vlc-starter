@@ -249,7 +249,12 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnBrowseButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Set path
+                this.pathTextBox.Text = this.openFileDialog.FileName;
+            }
         }
 
         /// <summary>
