@@ -72,7 +72,16 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnCutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check for command
+            if (this.commandTextBox.Text.Length > 0)
+            {
+                // Copy to clipboard
+                Clipboard.Clear();
+                Clipboard.SetText(this.commandTextBox.Text);
+
+                // Clear command text
+                this.commandTextBox.Text = string.Empty;
+            }
         }
 
         /// <summary>
@@ -141,6 +150,24 @@ namespace VLCstarter
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnNumericUpDownValueChanged(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the path text box text changed.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnPathTextBoxTextChanged(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Processes the command.
+        /// </summary>
+        private void ProcessCommand()
         {
             // TODO Check no command flag [Can be made by event handler]
             if (this.noCommand)

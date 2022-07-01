@@ -191,6 +191,9 @@
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>686, 17</value>
   </metadata>
+  <data name="openFileDialog.Filter" xml:space="preserve">
+    <value>Common media files|*.aac;*.AAC;*.aif;*.AIF;*.aifc;*.AIFC;*.aiff;*.AIFF;*.avi;*.AVI;*.cda;*.CDA;*.m1v;*.M1V;*.m3u;*.M3U;*.m4a;*.M4A;*.mid;*.MID;*.midi;*.MIDI;*.mkv;*.MKV;*.mov;*.MOV;*.mp2;*.MP2;*.mp3;*.MP3;*.mp4;*.MP4;*.mpa;*.MPA;*.mpe;*.MPE;*.mpeg;*.MPEG;*.mpg;*.MPG;*.rmi;*.RMI;*.wav;*.WAV;*.wma;*.WMA;*.wmv;*.WMV;*.3g2;*.3G2;*.3gp;*.3GP;*.3gp2;*.3GP2;*.3gpp;*.3GPP|All Files (*.*)|*.*</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAEAIABoBAAAVgAAABgYAAABACAAiAkAAL4EAAAgIAAAAQAgAKgQAABGDgAAMDAAAAEA

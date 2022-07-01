@@ -365,6 +365,7 @@ namespace VLCstarter
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.Size = new System.Drawing.Size(148, 26);
             this.pathTextBox.TabIndex = 1;
+            this.pathTextBox.TextChanged += new System.EventHandler(this.OnPathTextBoxTextChanged);
             // 
             // startTableLayoutPanel
             // 
@@ -514,7 +515,7 @@ namespace VLCstarter
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "Common media files|*.aac;*.AAC;*.aif;*.AIF;*.aifc;*.AIFC;*.aiff;*.AIFF;*.avi;*.AVI;*.cda;*.CDA;*.m1v;*.M1V;*.m3u;*.M3U;*.m4a;*.M4A;*.mid;*.MID;*.midi;*.MIDI;*.mkv;*.MKV;*.mov;*.MOV;*.mp2;*.MP2;*.mp3;*.MP3;*.mp4;*.MP4;*.mpa;*.MPA;*.mpe;*.MPE;*.mpeg;*.MPEG;*.mpg;*.MPG;*.rmi;*.RMI;*.wav;*.WAV;*.wma;*.WMA;*.wmv;*.WMV;*.3g2;*.3G2;*.3gp;*.3GP;*.3gp2;*.3GP2;*.3gpp;*.3GPP|All Files (*.*)|*.*";
+            this.openFileDialog.Filter = resources.GetString("openFileDialog.Filter");
             // 
             // MainForm
             // 
