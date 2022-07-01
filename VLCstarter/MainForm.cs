@@ -107,7 +107,8 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnSelectAllToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            this.commandTextBox.SelectAll();
+            this.commandTextBox.Focus();
         }
 
         /// <summary>
