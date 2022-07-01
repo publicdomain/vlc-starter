@@ -91,7 +91,13 @@ namespace VLCstarter
         /// <param name="e">Event arguments.</param>
         private void OnCopyToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check for command
+            if (this.commandTextBox.Text.Length > 0)
+            {
+                // Copy to clipboard
+                Clipboard.Clear();
+                Clipboard.SetText(this.commandTextBox.Text);
+            }
         }
 
         /// <summary>
